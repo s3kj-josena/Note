@@ -106,6 +106,23 @@
 -i ：用sed的修改结果直接修改读取数据的文件，而不是由屏幕输出
 ```
 
+**Linux下WPS相关命令有：et** \(打开WPS表格\) , **wps** \(打开WPS文字程序\) , **wpp** \(打开WPS演示程序\)
+
+```
+1、不带操作对象参数
+    et    //打开WPS表格程序
+    wps    //打开WPS文字程序
+    wpp    //打开WPS演示程序
+2、带有操作对象参数
+    et a.xls    //打开WPS表格程序，并编辑a.xls文档
+    wps a.doc    //打开WPS文字程序，并编辑a.doc文档
+    wpp a.ppt    //打开WPS演示程序，并编辑a.ppt文档
+3、在后台运行
+    nohup et a.xls &
+    nohup wps a.doc &
+    nohup wpp a.ppt &
+```
+
 **软连接和硬链接：**
 
 | 硬链接 | 软连接 |
