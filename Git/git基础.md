@@ -76,44 +76,71 @@ master 指向提交，HEAD 指向当前分支。
 删除分支：git branch -d dev
 ```
 
-   2. **解决冲突：**
+2.**解决冲突：**
 
-       当Git无法自动合并分支时,就必须首先解决冲突。解决冲突后,再提交,合并完成。
+当Git无法自动合并分支时,就必须首先解决冲突。解决冲突后,再提交,合并完成。
 
-       用 git log --graph 命令可以看到分支合并图。
+用 git log --graph 命令可以看到分支合并图。
 
 ```
 git log --graph --pretty=oneline --abbrev-commit
 ```
 
-   3.**分支管理策略：**
+3.**分支管理策略：**
 
-       通常，合并分支时，Git 会用 Fast forward 模式，但这种模式下删除分支会丢掉分支信息
+通常，合并分支时，Git 会用 Fast forward 模式，但这种模式下删除分支会丢掉分支信息
 
-       如果要强制禁用 Fast forward 模式，Git 就会在 merge 时生成一个新的 commit 
+如果要强制禁用 Fast forward 模式，Git 就会在 merge 时生成一个新的 commit
 
-       这样，从分支历史上就可以看出分支信息
+这样，从分支历史上就可以看出分支信息
 
 ```
 合并：git merge --no-ff -m "merge with no-ff" dev
                 --no-ff 参数表示禁用 Fast forward 模式
-                因为本次sf
-
+         因为本次合并要创建一个新的 commit ，所以加上 -m 参数，把 commit 描述写入
 ```
 
-   4.**Bug 分支：**
+**分支策略：**
 
-       
+* master 分支非常稳定，仅用来发布新版本，平时不能在上面干活
+* dev 分支不稳定，干活都在 dev 分支上，再把 dev 分支合并到 master 分支上
 
-   5.**Feature 分支：**
+4.**Bug 分支：**
 
-       
+* 修复 bug 时，我们会通过创建新的 bug 分支进行修复，然后合并，最后删除
+* 当手头工作没有完成时，先把工作现场 git stash 一下，然后去修复 bug 
+* 修复后再 git stash pop ，回到工作现场
 
-   6.**多人协作：**
+```
+git status 查看是否有未提交的工作
+git stash 将当前工作现场“储藏”
+git status 查看工作区是干净的
+git checkout master 回到需要修复的分支
+git checkout -b issue-101 创建临时分支
+修复 bug 
+git add readma.txt && git commit -m "fix bug 101" 提交
+git checkout master 切换到 master 分支
+git merge --no-ff -m "merged bug fix 101" issue-101 合并
+git branch -d issue-101 删除临时分支
+修复完成
+git checkout dev 回到原先分支继续干活
+git status 查看工作区是干净的
+git stash list 查看，工作现场还在
+    git stash apply 恢复，恢复后 stash 内容不删除
+    git stash drop 删除 stash 内容
+git stash pop 恢复的同时把 stash 内容也删除
+git stash list 查看，stash 没有任何内容
+```
 
-       
+可以多次 stash ，恢复的时候先用 git stash list 查看，然后恢复指定的 stash ：
 
+```
+git stash apply stash@{0}
+```
 
+5.**Feature 分支：**
+
+6.**多人协作：**
 
 、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
 
@@ -144,6 +171,4 @@ git log --graph --pretty=oneline --abbrev-commit
 但Git的分支是与众不同的,无论创建、切换和删除分支,Git在1秒钟之内就能完
 
 成!无论你的版本库是1个文件还是1万个文件。
-
-
 
