@@ -113,23 +113,23 @@ git log --graph --pretty=oneline --abbrev-commit
 
 ```
 git status 查看是否有未提交的工作
-git stash 将当前工作现场“储藏”
-git status 查看工作区是干净的
-git checkout master 回到需要修复的分支
-git checkout -b issue-101 创建临时分支
+    git stash 将当前工作现场“储藏”
+        git status 查看工作区是干净的
+            git checkout master 回到需要修复的分支
+                git checkout -b issue-101 创建临时分支
 修复 bug 
 git add readma.txt && git commit -m "fix bug 101" 提交
-git checkout master 切换到 master 分支
-git merge --no-ff -m "merged bug fix 101" issue-101 合并
-git branch -d issue-101 删除临时分支
+    git checkout master 切换到 master 分支
+        git merge --no-ff -m "merged bug fix 101" issue-101 合并
+            git branch -d issue-101 删除临时分支     
 修复完成
 git checkout dev 回到原先分支继续干活
-git status 查看工作区是干净的
-git stash list 查看，工作现场还在
-    git stash apply 恢复，恢复后 stash 内容不删除
-    git stash drop 删除 stash 内容
-git stash pop 恢复的同时把 stash 内容也删除
-git stash list 查看，stash 没有任何内容
+    git status 查看工作区是干净的
+        git stash list 查看，工作现场还在
+            git stash apply 恢复，恢复后 stash 内容不删除
+            git stash drop 删除 stash 内容
+                git stash pop 恢复的同时把 stash 内容也删除
+                    git stash list 查看，stash 没有任何内容
 ```
 
 可以多次 stash ，恢复的时候先用 git stash list 查看，然后恢复指定的 stash ：
@@ -140,7 +140,122 @@ git stash apply stash@{0}
 
 5.**Feature 分支：**
 
+每添加一个新功能，最好新建一个 feature 分支，在上面开发，完成后合并，最后删除该 feature 分支
+
+假设要开发代号为 Vulcan 的新功能：
+
+```
+git checkout -b feature-vulcan 创建分支
+git add vulcan.py 
+git commit -m "add feature vulcan" 开发完后提交
+git checkout dev 切回 dev ，准备合并
+```
+
+由于某种原因，该新功能要取消，该分支必须销毁：
+
+```
+git checkout -d feature-vulcan
+销毁失败！因为 feature-vulcan 分支还没有被合并，如果删除将失掉修改
+```
+
+如果要强行删除，需要使用命令：
+
+```
+git branch -D feature-vulcan
+删除成功！
+```
+
 6.**多人协作：**
+
+当从远程仓库克隆时，Git 自动把本地 master 分支和远程 master 分支对应起来了
+
+并且远程仓库的默认名称是 origin 
+
+```
+git remote 查看远程仓库信息
+git remote -v 显示更详细的信息
+```
+
+上面显示了可以抓取和推送的 origin 的地址，如果没有推送权限，就看不到 push 地址
+
+**推送分支：**
+
+把该分支上的所有本地提交推送到远程库
+
+推送时要指定本地分支，Git 就会把该分支推送到远程库对应的远程分支上
+
+```
+git push origin master / git push origin dev
+```
+
+* master 分支是主分支，要时刻与远程同步
+* dev 分支是开发分支，团队所有成员都要在上面工作，也要与远程同步
+* bug 分支只用于本地修复 bug ，没必要推送
+* feature 分支是否推送取决于你是否和你的小伙伴合作在上面开发
+
+**抓取分支：**
+
+多人协作时，大家都会往 master 和 dev 分支上推送各自的修改
+
+如果你的小伙伴先推送了他的提交，而你碰巧对同一文件作了修改，则会推送失败
+
+要先用 git pull 把最新的提交从 origin/dev 抓下来，在本地合并解决冲突，再推送
+
+```
+先设置本地 dev 分支和远程 origin/dev 分支的链接：
+git branch --set-upstream dev origin/dev
+再抓取：
+git pull
+手动解决合并冲突，提交
+再推送：
+git commit -m "..."
+git push origin dev
+```
+
+因此，多人协作的工作模式通常是这样：
+
+* 首先试图用 git push origin branch-name 推送自己的修改
+* 如果推送失败，需要先用 git pull 试图合并
+* 如果合并有冲突，则解决冲突，并在本地提交
+* 再用 git push origin branch-name 推送
+
+**标签管理：**
+
+**创建标签：**
+
+* 命令 git tag &lt;name&gt 用于新建一个标签，默认为 HEAD ，也可指定一个 commit id
+* git tag -a &lt;tagname&gt;  -m  "blablabla..." 可以用指定标签信息
+* git tag -s &lt;tagname&gt;  -m  "blablabla..." 可以用 PGP 签名标签
+* 命名 git tag 可以查看所有标签
+
+**操作标签：**
+
+```
+git tag -d v0.1 删除本地标签
+git push origin v1.0 推送某个标签到远程
+git push origin --tags 推送全部未推送过的本地标签
+删除远程标签：
+    先从本地删除 git tag -d v0.9
+    再从远程删除 git push origin :refs/tags/v0.9
+```
+
+**使用 GitHub：**
+
+* 在 GitHub 上，可以任意 Fork 开源仓库
+* 自己拥有 Fork 后的仓库的读写权限
+* 可以推送 pull request 给官方仓库来贡献代码
+
+**自定义 Git**
+
+让 Git 显示颜色：
+
+```
+git config --global color.ui ture
+```
+
+**忽略特殊文件：**
+
+
 
 、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
 
