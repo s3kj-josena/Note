@@ -97,8 +97,9 @@
         移动或重命名文件或目录：
 ```
 
+**移动或重命名文件或目录：**
 
-    ```
+```
     mv [选项] 源文件或目录 目标文件或目录
         -b ：若需覆盖文件，则覆盖前先行备份。 
         -f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
@@ -106,36 +107,38 @@
         -u ：若目标文件已经存在，且 source 比较新，才会更新(update)
         -t  ： --target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY
                 即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。
-    ```
+```
 
 文件改名：
 
 将文件 test.log 重命名为 test1.txt：
 
-    ```
+```
     mv test.log test1.txt
-    ```
+```
+
 移动文件：
 
 将 test1.txt 文件移到 test3 目录中
 
-    ```
+```
     mv test1.txt test3
-    ```
+```
 
 将文件 log1.txt , log2.txt , log3.txt 移动到目录 test3 中：
 
 将 log1.txt , log2.txt , log3.txt 三个文件移到 test3 目录中：
 
-    ```
+```
     mv log1.txt log2.txt log3.txt test3
-    ```
+```
 
 又将三个文件移动到 test4 目录中：
 
-    ```
+```
     mv -t /opt/soft/test/test4/ log1.txt log2.txt log3.txt
-    ```
+```
+
 目录的移动：
 
 ```
@@ -143,45 +146,46 @@ mv dir1 dir2
 
 如果目录 dir2 不存在，将目录 dir1 改名为 dir2 ，否则，将 dir1 移动到 dir2 中
 ```
-移动当前文件夹下的所有文件到上一级目录：**
 
-    ```
+移动当前文件夹下的所有文件到上一级目录：\*\*
+
+```
     mv *../
-    ```
+```
 
 把当前目录的一个子目录里的文件移动到另一个子目录里：
 
-    ```
+```
     mv test3/*.txt test5
 
 
 **字符截取命令：sed**
 
 * sed \[选项\] ‘\[动作\]’ 文件名
-
 ```
--n ：一般sed命令会把所有数据都输出到屏幕，加入此选项则只把经sed命令处理的行输出到屏幕
--e ：允许对输入数据应用多条sed命令编辑
+
+-n ：一般sed命令会把所有数据都输出到屏幕，加入此选项则只把经sed命令处理的行输出到屏幕  
+-e ：允许对输入数据应用多条sed命令编辑  
 -i ：用sed的修改结果直接修改读取数据的文件，而不是由屏幕输出
-```
 
+```
 **Linux下WPS相关命令有：et** \(打开WPS表格\) , **wps** \(打开WPS文字程序\) , **wpp** \(打开WPS演示程序\)
-
 ```
-1、不带操作对象参数
-    et    //打开WPS表格程序
-    wps    //打开WPS文字程序
-    wpp    //打开WPS演示程序
-2、带有操作对象参数
-    et a.xls    //打开WPS表格程序，并编辑a.xls文档
-    wps a.doc    //打开WPS文字程序，并编辑a.doc文档
-    wpp a.ppt    //打开WPS演示程序，并编辑a.ppt文档
-3、在后台运行
-    nohup et a.xls &
-    nohup wps a.doc &
+
+1、不带操作对象参数  
+    et    //打开WPS表格程序  
+    wps    //打开WPS文字程序  
+    wpp    //打开WPS演示程序  
+2、带有操作对象参数  
+    et a.xls    //打开WPS表格程序，并编辑a.xls文档  
+    wps a.doc    //打开WPS文字程序，并编辑a.doc文档  
+    wpp a.ppt    //打开WPS演示程序，并编辑a.ppt文档  
+3、在后台运行  
+    nohup et a.xls &  
+    nohup wps a.doc &  
     nohup wpp a.ppt &
-```
 
+```
 **软连接和硬链接：**
 
 | 硬链接 | 软连接 |
@@ -192,28 +196,26 @@ mv dir1 dir2
 | 4. 不能针对目录使用 | 4. 删除原文件，软连接不能使用 |
 
 **常用目录的作用：**
-
-```
-/根目录
-/bin 命令保存目录（普通用户就可读取的命令）
-    /sbin 超级用户才能使用的目录
-/boot 启动目录，启动相关文件
-/dev 设备文件保存目录
-/etc 配置文件保存目录
-/home 普通用户的家目录
-    /root 超级用户的家目录
-/tmp 临时目录
-/lib 系统库保存目录
-/mnt 系统挂载目录
-/media 挂载目录
-/tmp 临时目录
-/proc 直接写入内存的
-/sys 同上
-/usr 系统软件资源目录
-    /usr/bin/系统命令（普通用户）
-    /usr/sbin/系统命令（超级用户）
-/var 系统相关文档内容
 ```
 
-
+/根目录  
+/bin 命令保存目录（普通用户就可读取的命令）  
+    /sbin 超级用户才能使用的目录  
+/boot 启动目录，启动相关文件  
+/dev 设备文件保存目录  
+/etc 配置文件保存目录  
+/home 普通用户的家目录  
+    /root 超级用户的家目录  
+/tmp 临时目录  
+/lib 系统库保存目录  
+/mnt 系统挂载目录  
+/media 挂载目录  
+/tmp 临时目录  
+/proc 直接写入内存的  
+/sys 同上  
+/usr 系统软件资源目录  
+    /usr/bin/系统命令（普通用户）  
+    /usr/sbin/系统命令（超级用户）  
+/var 系统相关文档内容  
+\`\`\`
 
