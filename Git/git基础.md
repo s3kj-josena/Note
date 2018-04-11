@@ -55,7 +55,32 @@ git remote add origin git@github.com:s3kj-josena/learngit.git
 ```
 git clone git@github.com:s3kj-josena/server-name.git
 git clone http://github.com/s3kj-josena/server-name.git
+默认克隆的是远程仓库的 master 分支
 ```
+
+**克隆远程非 master 分支：**
+
+方法一：
+
+```
+git branch -r 查看远程分支
+git branch -a 查看所有分支
+git checkout origin/分支名 
+```
+
+方法二：
+
+```
+git branch 分支名  在本地建立一个分支
+git checkout 分支名  切换到该本地分支
+建立上游分支的关联：
+    git pull
+    git branch --set-upstream-to=origin/远程分支名 本地分支名
+    git pull
+add,commit,push.
+```
+
+
 
 **分支管理：**
 
@@ -256,6 +281,4 @@ git config --global color.ui ture
 **忽略特殊文件：**
 
 、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、
-
-
 
