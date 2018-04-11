@@ -94,73 +94,66 @@
         zip 压缩文件名 源文件 ：压缩文件
         zip -r 压缩文件名 源目录 ：压缩目录
         unzip 压缩文件 ：.zip格式解压缩
+        移动或重命名文件或目录：
 ```
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**移动或重命名文件或目录：**
+    ```
+    mv [选项] 源文件或目录 目标文件或目录
+        -b ：若需覆盖文件，则覆盖前先行备份。 
+        -f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
+        -i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
+        -u ：若目标文件已经存在，且 source 比较新，才会更新(update)
+        -t  ： --target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY
+                即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。
+    ```
 
-```
-mv [选项] 源文件或目录 目标文件或目录
-    -b ：若需覆盖文件，则覆盖前先行备份。 
-    -f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
-    -i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
-    -u ：若目标文件已经存在，且 source 比较新，才会更新(update)
-    -t  ： --target-directory=DIRECTORY move all SOURCE arguments into DIRECTORY
-            即指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后。
-```
-
-**文件改名：**
+文件改名：
 
 将文件 test.log 重命名为 test1.txt：
 
-```
-mv test.log test1.txt
-```
-
-**移动文件：**
+    ```
+    mv test.log test1.txt
+    ```
+移动文件：
 
 将 test1.txt 文件移到 test3 目录中
 
-```
-mv test1.txt test3
-```
+    ```
+    mv test1.txt test3
+    ```
 
-**将文件 log1.txt , log2.txt , log3.txt 移动到目录 test3 中：**
+将文件 log1.txt , log2.txt , log3.txt 移动到目录 test3 中：
 
 将 log1.txt , log2.txt , log3.txt 三个文件移到 test3 目录中：
 
-```
-mv log1.txt log2.txt log3.txt test3
-```
+    ```
+    mv log1.txt log2.txt log3.txt test3
+    ```
 
 又将三个文件移动到 test4 目录中：
 
-```
-mv -t /opt/soft/test/test4/ log1.txt log2.txt log3.txt
-```
-
-**目录的移动：**
+    ```
+    mv -t /opt/soft/test/test4/ log1.txt log2.txt log3.txt
+    ```
+目录的移动：
 
 ```
 mv dir1 dir2
 
 如果目录 dir2 不存在，将目录 dir1 改名为 dir2 ，否则，将 dir1 移动到 dir2 中
 ```
+移动当前文件夹下的所有文件到上一级目录：**
 
-**移动当前文件夹下的所有文件到上一级目录：**
+    ```
+    mv *../
+    ```
 
-```
-mv *../
-```
+把当前目录的一个子目录里的文件移动到另一个子目录里：
 
-**把当前目录的一个子目录里的文件移动到另一个子目录里：**
+    ```
+    mv test3/*.txt test5
 
-```
-mv test3/*.txt test5
-```
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **字符截取命令：sed**
 
