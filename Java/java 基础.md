@@ -278,9 +278,74 @@ public class HelloWorld{
 import java.util.Arrays;
 public static void main(String[] args){
     int[] nums = new int[]{25,7,126,53,14,86};
-    System.out.println("")
+    System.out.println("输出数组 nums 中的的元素："+ Arrays.toString(nums));
+}
+运行结果：
+        输出数组 nums 中的元素：25,7,126,53,14,86
+```
+
+**使用 foreach 操作数组：**
+
+foreach 是 for 语句的特殊简化版本，在遍历数组、集合时，foreach 更简单便捷
+
+```
+for(元素类型 元素变量名 : 遍历对象){
+    执行的代码
+}
+
+String[] hobbys = {"我","爱","你"};
+for(String hobby : hobbys){
+    System.out.print(hobby);
 }
 ```
+
+**java 中的二维数组：**
+
+二维数组的每个数组空间保存的是一个一维数组
+
+**声明数组并分配空间：**
+
+```
+数据类型[][] 数组名 = new 数据类型[行的个数][列的个数];
+int[][] scores = new int[3][4]; //定义一个3行4列的二维数组
+ 
+或者：
+数据类型[][] 数组名;
+数组名 = new 数据类型[行数][列数]; 
+```
+
+**赋值：**
+
+```
+数组名[行下标][列下标] = 值；
+数据类型[][] 数组名 = {{值1,值2...},{值11,值22...},{值21,值22...}};
+num[0][0] = 12;  //给第1行第1列的元素赋值
+```
+
+**处理数组：**
+
+使用二重循环来输出二维数组中的每一个元素：
+
+```
+int[][] num = {{1,2,3},{4,5,6}};   //定义一个两行三列的二维数组并赋值
+for(int i=0;i<num.length;i++){    //定位行
+    for(int j=0;j<bum[i].length;j++){    //定位每行的元素
+        System.out.print(num[i][j]);    //依次输出每个元素
+    }
+    System.out.println();    //每行打印结束要换行
+}
+运行结果：
+        123
+        456
+```
+
+
+
+
+
+
+
+
 
 
 
