@@ -7,7 +7,7 @@
 ```
 定义类：public class 类名{}
 创建对象：类名 对象名 = new 类名();
-        HelloWorld hello = new HelloWorld();        
+        HelloWorld hello = new HelloWorld();
 ```
 
 类的特点：
