@@ -12,17 +12,17 @@
 
 **标签：**
 
-标题标签：&lt;hx&gt;标题文本&lt;/hx&gt;   （h1——h6分别为一级标题到六级标题，h1是最高等级）
+标题标签：**&lt;hx&gt;**标题文本&lt;/hx&gt;   （h1——h6分别为一级标题到六级标题，h1是最高等级）
 
-段落标签：&lt;p&gt;段落文本&lt;/p&gt;
+段落标签：**&lt;p&gt;**段落文本&lt;/p&gt;
 
-图片标签：&lt;img src="xxx.jpg"&gt;
+图片标签：**&lt;img **src="xxx.jpg"&gt;
 
-强调标签：&lt;strong&gt;&lt;/strong&gt;   更强烈的强调，默认**粗体**表示。
+强调标签：**&lt;strong&gt;**&lt;/strong&gt;   更强烈的强调，默认**粗体**表示。
 
-                   &lt;em&gt;&lt;/em&gt;   强调，默认**斜体**表示。
+强调：**&lt;em&gt;**&lt;/em&gt;  默认**斜体表示。**
 
-&lt;span&gt;标签：设置单独的样式。
+**&lt;span&gt;**标签：设置单独的样式。
 
 ```
 <html>
@@ -37,13 +37,305 @@ span{color:red;}   /*设置样式*/
 </html>
 ```
 
-&lt;q&gt; 标签：短文本引用。&lt;q&gt;引用文本&lt;/q&gt;（要引用的文本不用加双引号，浏览器会对q标签自动添加双引号）
+**&lt;q&gt; **标签：短文本引用。&lt;q&gt;引用文本&lt;/q&gt;（要引用的文本不用加双引号，浏览器会对q标签自动添加双引号）
 
-&lt;blockquote&gt;标签：长文本引用。（浏览器对该标签的解析是缩进样式）
+**&lt;blockquote&gt;**标签：长文本引用。（浏览器对该标签的解析是缩进样式）
 
-&lt;br /&gt;标签：分行显示文本。（在 html 代码中输入回车、空格都是无效的，要换行必须输入&lt;br /&gt;）
+**&lt;br /&gt;**标签：分行显示文本。（在 html 代码中输入回车、空格都是无效的，要换行必须输入&lt;br /&gt;）
 
-&nbsp ：空格
+**  &nbsp**：空格。
+
+**&lt;hr /&gt; **：添加水平横线。
+
+**&lt;address&gt; **：为网页加入地址信息。&lt;address&gt;联系地址信息&lt;/address&gt;
+
+**&lt;code&gt; **：加入一行代码
+
+```
+<code>代码语言</code>
+如：<code>var i=i+300;</code>
+```
+
+**&lt;pre&gt; **：加入大段代码。
+
+```
+<pre>语言代码段</pre>
+如：
+<pre>
+    var message="欢迎";
+    for(var i=1;i<=10;i++){
+        alert(message);
+    }
+</pre>
+```
+
+**&lt;ul&gt; **：添加信息列表。
+
+```
+<ul>
+    <li>信息</li>
+    <li>信息</li>
+    ... ...
+</ul>
+ul-li是没有前后顺序的信息列表，显示的默认样式为每项 li 前都自带一个原点。
+```
+
+有序的列表：
+
+```
+<ol>
+    <li>信息</li>
+    <li>信息</li>
+    ... ...
+</ol>
+<ol>在网页中显示的默认样式一般为每项 li 前都自带一个序号，从1开始。
+```
+
+**&lt;div&gt; **：把一些独立的逻辑部分划分出来，放在一个 &lt;div&gt; 标签中，这个标签的作用相当于一个容器。
+
+```
+<div>...</div>
+（红色边框）
+```
+
+给 **div 命名**，使逻辑更加清晰：用** id **属性来为 &lt;div&gt; 提供唯一的名称。
+
+```
+<div id="版块名称">...</div>
+```
+
+**&lt;table&gt; ：**表格。
+
+```
+<table>
+    <tr>    /*表格的行，有几对<tr></tr>就有几行
+        <th>表头1</th>
+        <th>表头2</th>
+    </tr>
+    <tr>
+        <td>列1的值</td>
+        <td>列2的值</td>    /*一行中包含几对<td></td>就有几列
+    </tr>
+</table>
+```
+
+创建表格的四个元素：**table 、tbody 、tr 、th 、td**
+
+**&lt;tbody&gt;…&lt;/tbody&gt;：**如果不加&lt;thead&gt;&lt;tbody&gt;&lt;tfooter&gt; , table表格加载完后才显示。加上这些表格结构， tbody包含行的内容下载完优先显示，不必等待表格结束后在显示，同时如果表格很长，用tbody分段，可以一部分一部分地显示。（通俗理解table 可以按结构一块块的显示，不在等整个表格加载完后显示。）
+
+**用 CSS 样式，为表格加入边框：**
+
+```
+<style type="text/css">
+    /*为 th,td 单元格添加粗细为一个像素的黑色边框*/
+    table tr td,th{border:1px solid #000;}
+</style>
+```
+
+**caption 标签，为表格添加标题和摘要：**
+
+**摘要**的内容不会在浏览器中显示出来，作用是增加表格的可读性（语义化）。
+
+```
+<table summary="表格简介文本">
+```
+
+**标题**是用以描述表格内容，显示位置：表格上方。
+
+```
+<table>
+    <caption>标题文本</caption>
+    <tr>
+        <td>...</td>
+        ...
+    </tr>
+    ...
+</table>
+```
+
+**&lt;a&gt; 标签：**实现超链接。
+
+```
+<a href="目标网址" title="鼠标滑过显示的文本">链接显示的文本</a>
+```
+
+title属性的作用，鼠标滑过链接文字时会显示这个属性的文本内容。这个属性在实际网页开发中作用很大，主要方便搜索引擎了解链接地址的内容（语义化更友好）。
+
+**在新建浏览器窗口中打开链接：**
+
+&lt;a&gt; 标签在默认情况下，链接的网页是在当前浏览器窗口打开，如果需要在新的浏览器窗口中打开：
+
+```
+<a href="目标网址" target="_blank">click here!</a>
+```
+
+**使用 mailto 在网页中链接 Email 地址：**
+
+邮箱地址\(收件人\)：mailto:
+
+抄送地址：cc=
+
+密件抄送地址：bcc=
+
+邮件主题：subject=
+
+邮件内容：body=
+
+如果 mailto 后面有多个参数，第一个必须以" ? "开头，后面每一个参数都以" & "分隔。
+
+```
+<a href="mailto:shoujianren@imooc.com ? cc=chaosong@imooc.com 
+& bcc=mijian@imooc.com & subject=主题 & body=邮件内容">发送</a>
+
+点击发送就会自动填写收件人等设置好的信息。
+```
+
+**&lt;img&gt; 标签：**为网页插入图片
+
+```
+<img src="图片地址" alt="下载失败时的替换文本" title="提示文本">
+
+举例：<img src="myimage.gif" alt="加载失败" title="这是我的图片" />
+src : 标识图像的位置
+alt : 指定图像的描述性文本，当图像不可见时，可看到该属性指定的文本
+title : 提供在图像可见时对图像的描述（鼠标滑过图片时显示的文本）
+图像可以是 GIF、PNG、JPEG 格式的图像文件。
+```
+
+**使用表单标签，与用户交互：**
+
+表单是可以把浏览者输入的数据传送到服务器端，这样服务器端程序就可以处理表单传过来的数据。
+
+```
+<form method="传送方式" action="服务器文件">
+```
+
+**&lt;form&gt;** ：&lt;form&gt;标签是成对出现的，以&lt;form&gt;开始，以&lt;/form&gt;结束。
+
+**action **：浏览者输入的数据被传送到的地方，比如一个 PHP 页面\(save.php\)。
+
+**method **：数据传送的方式（get/post）。
+
+```
+<form  method="post" action="save.php">
+    <label for="username">用户名：
+    </label>
+    <input typa="text" name="username" />
+    <label for="pass">密码：
+    </label>
+    <input type="password" name="pass" />
+</form>
+```
+
+**文本输入框、密码输入框：**
+
+```
+<form>
+    <input type="text/password" name="名称" value="文本" />
+</form>
+```
+
+**type **：当 type="**text**" 时，输入框为**文本输入框**；当 type="**password**" 时，输入框为**密码输入框**。
+
+**name **：为文本框命名，以备后台程序 ASP、PHP 使用。
+
+**value **：为文本输入框设置默认值（一般起到提示作用）。
+
+```
+<form>
+    姓名：
+    <input type="text" name="myName">
+    <br />
+    密码：
+    <input type="password" name="pass">
+</form>
+```
+
+**文本域**：支持多行文本输入。
+
+```
+<textarea rows="行数" cols="列数">文本</textarea>
+```
+
+在 &lt;textarea&gt;&lt;/textarea&gt; 标签之间可以输入默认值：
+
+```
+<form method="post" action="save.php">
+    <label>联系我们</label>
+    <textarea cols="50" rows="10" >在这里输入内容...
+    </textarea>
+</form>
+```
+
+**单选框、复选框：**
+
+```
+<input type="radio/checkbox" value="值" name="名称" checked="checked"/>
+```
+
+**type **：当 type="**radio**" 时，控件为**单选框**；当 type="**checkbox**" 时，控件为**复选框**。
+
+**value **：提交数据到服务器的值（后台程序 PHP 使用）。
+
+**name **：为控件命名，以备后台程序 ASP、PHP 使用。
+
+**checked **：当设置 checked="checked" 时，该选项被默认选中。
+
+注意：同一组的单选按钮，name 取值一定要一致。
+
+**下拉列表框：**节省空间。
+
+```
+<form name="iForm">
+    <label>爱好：</label>
+    <select>
+        <option value="提交值">选项</option>
+        ...
+        <option value="xxx">xx</option>
+        <option value="购物" selected="selected" >购物</option>
+    </select>
+</form>
+```
+
+提交值：向服务器提交的值
+
+选项：显示的值
+
+selected="selected" ：设置该属性，则该选项就被默认选中。
+
+**下拉列表框（多选）：**
+
+在 &lt;select&gt; 开始标签中设置 multiple="multiple" 属性，可实现多选功能。
+
+```
+<form name="iForm">
+    <label>爱好：</label>
+    <select multiple="multiple">
+        <option value="xx">xx</option>
+        ...
+    </select>
+</form>
+```
+
+**提交按钮：**
+
+```
+<input type="submit" value="提交">
+```
+
+type ：只有当 type 的值设置为 submit 时，按钮才有提交功能。
+
+value ：按钮上显示的字。
+
+**重置按钮：**
+
+```
+<input type="reset" value="重置">
+```
+
+**form 表单中的 label 标签：**
+
+
 
 
 
@@ -74,7 +366,7 @@ span{color:red;}   /*设置样式*/
 </head>
 ```
 
-&lt;title&gt; 标签：其中的文字内容是网页的标题信息，会出现在浏览器的标题栏中。用于告诉用户和搜索引擎这个网页的主要内容。
+**&lt;title&gt; **标签：其中的文字内容是网页的标题信息，会出现在浏览器的标题栏中。用于告诉用户和搜索引擎这个网页的主要内容。
 
 **HTML 的代码注释：**
 
