@@ -43,7 +43,7 @@ span{color:red;}   /*设置样式*/
 
 **&lt;br /&gt;**标签：分行显示文本。（在 html 代码中输入回车、空格都是无效的，要换行必须输入&lt;br /&gt;）
 
-**  &nbsp**：空格。
+**   **：空格。
 
 **&lt;hr /&gt; **：添加水平横线。
 
@@ -335,9 +335,26 @@ value ：按钮上显示的字。
 
 **form 表单中的 label 标签：**
 
+当用户单击选中该label标签时，浏览器就会自动将焦点转到和标签相关的表单控件上（就自动选中和该label标签相关连的表单控件上）。
 
+```
+<label for="控件 id 名称">
+```
 
+注意：标签的 for 属性中的值应当与相关控件的 id 属性值一定要相同。
 
+```
+<form>
+    <label for="male">男</label>
+    <input tyoe="radio" name="gender" id="male" />
+    <br />
+    <label for="female">女</label>
+    <input type="radio" name="gender" id="female" />
+    <br />
+    <label for="email">输入你的邮箱地址</label>
+    <input type="email" id="email" placeholder="Enter email">
+</form>
+```
 
 **认识 html 文件基本结构：**
 
@@ -374,7 +391,99 @@ value ：按钮上显示的字。
 <!--注释文字-->
 ```
 
+**CSS 注释代码：**
 
+```
+/*注释文字*/
+```
+
+**认识 CSS 样式：**
+
+CSS全称为“层叠样式表 \(Cascading Style Sheets\)”，它主要是用于定义HTML内容在浏览器内的显示样式，如文字大小、颜色、字体加粗等。
+
+通过定义某个样式，可以让不同网页位置的文字有着统一的字体、字号或者颜色等。
+
+```
+p{
+    font-size:12px;     /*字体大小*/
+    color:red;          /*字体颜色*/
+    font-weight:bold;   /*加粗*/
+}
+```
+
+**CSS** 样式由**选择符**和**声明**组成，而声明又由**属性**和**值**组成。——选择符{ 属性:值;属性:值;... }
+
+**CSS 样式基本知识：**
+
+**内联式：**把css代码直接写在现有的HTML标签中（注意要写在元素的开始标签里）。
+
+```
+<p style="color:red;font-size:12px">这里文字是红色。</p>
+```
+
+**嵌入式：**嵌入式css样式必须写在&lt;style&gt;&lt;/style&gt;之间，并且一般情况下写在&lt;head&gt;&lt;/head&gt;之间。
+
+```
+<head>
+    <style type="text/css">
+        span{color:red;}
+    </style>
+</head>
+```
+
+**外部式\(外联式\)：**把css代码写一个单独的外部文件中，这个css样式文件以“.css”为扩展名，在&lt;head&gt;内（不是在&lt;style&gt;标签内）使用&lt;link&gt;标签将css样式文件链接到HTML文件内。
+
+```
+<head>
+    <link href="bass.css" rel="stylesheet" type="text/css" />
+</head>
+```
+
+注意：
+
+* css 样式文件名称以有意义的英文字母命名，如 main.css 。
+* rel="stylesheet" type="text/css" 是固定写法，不可修改。
+* &lt;link&gt; 标签位置一般写在 &lt;head&gt; 标签之内。
+
+**优先级：就近原则**\(离被设置元素越近优先级越高\)
+
+内联式 &gt; 嵌入式 &gt; 外部式 \(但是嵌入式&gt;外部式有一个前提：嵌入式的位置一定在外部式的后面\)。
+
+**选择器：**
+
+在{}之前的部分就是“选择器”，“选择器”指明了{}中的“样式”的作用对象，也就是“样式”作用于网页中的哪些元素。
+
+```
+选择器{
+    样式；
+}
+```
+
+**标签选择器：**
+
+标签选择器其实就是html代码中的标签。如&lt;html&gt;、&lt;body&gt;、&lt;h1&gt;、&lt;p&gt;、&lt;img&gt;、&lt;span&gt;等。
+
+```
+p{......;} /
+span{......;}
+```
+
+**类选择器：**
+
+类选择器在css样式编码中是最常用到的
+
+```
+.类选器名称{css 样式代码;}
+```
+
+* 英文圆点开头"."
+* 类选器名称可以任意起名（但不要起中文）
+
+1. 使用合适的标签把要修饰的内容标记起来。
+2. 使用 class="类选器名称"为标签设置一个类。
+3. 设置类选器 css 样式。
+
+**ID选择器：**
 
 
 
